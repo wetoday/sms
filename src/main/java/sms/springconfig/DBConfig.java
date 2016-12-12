@@ -1,18 +1,15 @@
 package sms.springconfig;
 
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -29,9 +26,9 @@ public class DBConfig {
 
     @Bean
     DataSource dataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.h2.Driver");
-        ds.setUrl("jdbc:h2:~/test;AUTO_SERVER=TRUE");
+        HikariDataSource ds = new HikariDataSource();
+        ds.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+        ds.setJdbcUrl("jdbc:log4jdbc:h2:~/test;AUTO_SERVER=TRUE");
         ds.setUsername("sa");
         ds.setPassword("123");
         return ds;
@@ -55,11 +52,11 @@ public class DBConfig {
         return populator;
     }
 
-
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
+    @Autowired
+    public SqlSessionFactory sqlSessionFactory(final DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-        sqlSessionFactory.setDataSource(dataSource());
+        sqlSessionFactory.setDataSource(dataSource);
         sqlSessionFactory.setMapperLocations(
                 new PathMatchingResourcePatternResolver()
                         .getResources("classpath:sql/mapper/*.xml"));

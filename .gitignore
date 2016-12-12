@@ -13,6 +13,7 @@
 *.iml
 target
 build
+out
 
 # Eclipse 
 *.pydevproject
