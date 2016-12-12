@@ -27,6 +27,7 @@
           <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.2.8.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.2.8.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.security:spring-security-web:4.0.4.RELEASE" />
+          <element id="library" level="project" name="Gradle: com.zaxxer:HikariCP:2.4.7" />
           <element id="library" level="project" name="Gradle: com.h2database:h2:1.4.192" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.39" />
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis:3.4.1" />
@@ -44,7 +45,8 @@
           <element id="library" level="project" name="Gradle: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Gradle: org.springframework.security:spring-security-core:4.0.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.2.8.RELEASE" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.4.7/48879ebd6f4e8374b8fc90f39e564358f9455096/HikariCP-2.4.7.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-dbcp/commons-dbcp/1.4/30be73c965cc990b153a100aaaaafcf239f82d39/commons-dbcp-1.4.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.6/4572d589699f09d866a226a14b7f4323c6d8f040/commons-pool-1.6.jar" />
         </element>
       </element>
     </root>
