@@ -9,7 +9,7 @@
 .gradle
 
 # Idea
-idea
+.idea
 *.iml
 target
 build

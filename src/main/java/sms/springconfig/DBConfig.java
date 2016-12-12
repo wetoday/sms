@@ -31,7 +31,7 @@ public class DBConfig {
     DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.h2.Driver");
-        ds.setUrl("jdbc:h2:~/sshyun33;AUTO_SERVER=TRUE");
+        ds.setUrl("jdbc:h2:~/test;AUTO_SERVER=TRUE");
         ds.setUsername("sa");
         ds.setPassword("123");
         return ds;
