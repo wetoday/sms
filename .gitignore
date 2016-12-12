@@ -1,0 +1,39 @@
+# Common
+*target*
+*.jar
+*.war
+*.ear
+*.class
+
+# Gradle
+.gradle
+
+# Idea
+idea
+*.iml
+target
+build
+
+# Eclipse 
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builder 
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configuration"
+*.launch
+
+

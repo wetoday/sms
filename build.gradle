@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE'
+    }
+}
+
+ext {
+    mokitoVersion = '1.10.19'
+    jspVersion = '2.2'
+    mybatisVersion = '3.4.1'
+    mybatisSpringVersion = '1.3.0'
+}
+
+group 'wetoday'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+//noinspection GroovyAssignabilityCheck
+configurations.all {
+    exclude group: "commons-logging", module: "commons-logging"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:2.0.8.RELEASE'
+    }
+}
+
+dependencies {
+    // Test Dependencies
+    testCompile 'junit:junit'
+    testCompile 'org.hamcrest:hamcrest-library'
+    testCompile "org.mockito:mockito-core:${mokitoVersion}"
+
+    // Logging Dependencies
+    compile 'org.slf4j:jcl-over-slf4j'
+    compile 'ch.qos.logback:logback-classic'
+    compile 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+
+    // Servlet Dependencies
+    compile 'javax.inject:javax.inject'
+    compile 'javax.servlet:javax.servlet-api'
+    compile "javax.servlet.jsp:jsp-api:${jspVersion}"
+    compile 'javax.servlet:jstl'
+
+    // Spring Framework Dependencies
+    testCompile 'org.springframework:spring-test'
+    compile 'org.springframework:spring-webmvc'
+    compile 'org.springframework:spring-jdbc'
+
+    // Spring Security Dependencies
+    testCompile 'org.springframework.security:spring-security-test'
+    compile 'org.springframework.security:spring-security-web'
+
+    // Database Connector Dependencies
+    compile 'com.zaxxer:HikariCP'
+    compile 'com.h2database:h2'
+    compile 'mysql:mysql-connector-java'
+
+    // Mybatis Dependencies
+    compile "org.mybatis:mybatis:${mybatisVersion}"
+    compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+
+    // Utility Dependencies
+    compile 'com.google.guava:guava'
+    compile 'org.apache.commons:commons-lang3'
+}
