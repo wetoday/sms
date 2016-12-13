@@ -9,10 +9,11 @@
 .gradle
 
 # Idea
-idea
+.idea
 *.iml
 target
 build
+out
 
 # Eclipse 
 *.pydevproject

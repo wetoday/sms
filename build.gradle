@@ -20,6 +20,7 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.8
 
@@ -66,6 +67,7 @@ dependencies {
 
     // Database Connector Dependencies
     compile 'com.zaxxer:HikariCP'
+    compile 'commons-dbcp:commons-dbcp'
     compile 'com.h2database:h2'
     compile 'mysql:mysql-connector-java'
 
