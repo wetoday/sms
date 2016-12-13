@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySources({
-        @PropertySource(value = "classpath:properties/application-common.properties"),
+        @PropertySource(value = "classpath:properties/application-dev.properties"),
         @PropertySource(value = "classpath:properties/application-${spring.profiles.active}.properties",
                 ignoreResourceNotFound = true)
 })
@@ -34,7 +34,7 @@ public class DBConfig {
     private Resource INIT_DATA_SCRIPT;
 
     @Bean
-    DataSource prodDataSource() {
+    DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName(env.getProperty("db.driver"));
         ds.setUrl(env.getProperty("db.url"));
