@@ -20,7 +20,7 @@ public class LoggingAspect {
 
     @Before("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void loggingRequestMapping(JoinPoint joinPoint) {
-        String mappingMethod = parseMethodName(joinPoint.toString());
+        String mappingMethod = parseMethodName(joinPoint);
         String requestMappingInfo = String.format("Request URL Mapping - [%S][%s] ===> [%s]",
                 request.getMethod(), request.getRequestURI(), mappingMethod);
 
@@ -28,10 +28,13 @@ public class LoggingAspect {
     }
 
     // ex. "execution(String foo.bar.method(..))" ==> "foo.bar.method()"
-    private String parseMethodName(String joinPoint) {
-        Pattern pattern = Pattern.compile("^.+ ([\\w.]+)\\(.*");
-        Matcher matcher = pattern.matcher(joinPoint);
+    private String parseMethodName(JoinPoint joinPoint) {
+        String errorMessage = "Method Name Parsing Error";
+        if (joinPoint == null) return errorMessage;
 
-        return matcher.find() ? matcher.group(1) + "()" : "Method Name Parsing Error";
+        Pattern pattern = Pattern.compile("^.+ ([\\w.]+)\\(.*");
+        Matcher matcher = pattern.matcher(joinPoint.toString());
+
+        return matcher.find() ? matcher.group(1) + "()" : errorMessage;
     }
 }
