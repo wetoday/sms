@@ -62,6 +62,10 @@ dependencies {
     compile 'org.springframework:spring-webmvc'
     compile 'org.springframework:spring-jdbc'
 
+    // Spring AOP Dependencies
+    compile 'org.aspectj:aspectjrt'
+    compile 'org.aspectj:aspectjweaver'
+
     // Spring Security Dependencies
     testCompile 'org.springframework.security:spring-security-test'
     compile 'org.springframework.security:spring-security-web'
