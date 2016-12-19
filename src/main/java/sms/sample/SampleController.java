@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SampleController {
 
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String samplePage(Model model) {
