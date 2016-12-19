@@ -1,4 +1,4 @@
-package sms.springconfig;
+package sms.spring.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
