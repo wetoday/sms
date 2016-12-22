@@ -69,10 +69,10 @@ dependencies {
     // Spring Security Dependencies
     testCompile 'org.springframework.security:spring-security-test'
     compile 'org.springframework.security:spring-security-web'
+    compile 'org.springframework:spring-jdbc'
 
     // Database Connector Dependencies
     compile 'com.zaxxer:HikariCP'
-    compile 'commons-dbcp:commons-dbcp'
     compile 'com.h2database:h2'
     compile 'mysql:mysql-connector-java'
 
