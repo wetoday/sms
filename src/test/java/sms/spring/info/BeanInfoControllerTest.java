@@ -44,6 +44,6 @@ public class BeanInfoControllerTest {
                         hasItemInArray("org.springframework.context.event.internalEventListenerFactory")))
                 .andExpect(model().attribute("webBeans",
                         hasItemInArray("org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter")))
-                .andExpect(view().name("beans"));
+                .andExpect(view().name("spring/beans"));
     }
 }

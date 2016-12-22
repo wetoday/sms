@@ -1,4 +1,4 @@
-package sms.aop;
+package sms.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -28,13 +28,22 @@ public class LoggingAspect {
         this.request = request;
     }
 
-    @Before("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Before("PointCutDefinition.requestMapping()")
     public void loggingRequestMapping(JoinPoint joinPoint) {
         String requestMappingInfo = String.format(
-                "Request URL Mapping - [%S][%s] ===> [%s]",
-                request.getMethod(), request.getRequestURI(), getMethodName(joinPoint));
+                "Request arrived - [%s][%S] ===> [%s]",
+                request.getRequestURL(), request.getMethod(), getMethodName(joinPoint));
 
         logger.info(requestMappingInfo);
+    }
+
+    @Before(value = "PointCutDefinition.globalExceptionHandler(ex)")
+    public void loggingExceptionOccurred(Exception ex) {
+        String requestMappingInfo = String.format(
+                "Exception occurred - [%s] ===> [%s: \"%s\"]",
+                request.getRequestURL(), ex.getClass(), ex.getMessage());
+
+        logger.error(requestMappingInfo);
     }
 
     private String getMethodName(JoinPoint joinPoint) {

@@ -7,11 +7,12 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="aop-context.xml" />
-
     <mvc:annotation-driven />
+
 	<context:component-scan base-package="sms" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.context.annotation.EnableAspectJAutoProxy"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

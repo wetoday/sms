@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Profile("!prod")
 @Controller
 public class BeanInfoController {
 
@@ -19,6 +18,6 @@ public class BeanInfoController {
         model.addAttribute("rootBeans", infoService.getRootBeans());
         model.addAttribute("webBeans", infoService.getWebBeans());
 
-        return "beans";
+        return "spring/beans";
     }
 }

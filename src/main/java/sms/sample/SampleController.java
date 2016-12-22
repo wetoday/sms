@@ -25,7 +25,7 @@ public class SampleController {
         model.addAttribute("DBVersion", getDBVersion());
         model.addAttribute("profile", getProfile());
 
-        return "sample";
+        return "sample/main";
     }
 
     private String getDBVersion() {
