@@ -1,4 +1,4 @@
-package sms.aop;
+package sms.spring.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -11,5 +11,5 @@ public class PointCutDefinition {
 
    @Pointcut("@annotation(org.springframework.web.bind.annotation.ExceptionHandler) " +
            "&& args(ex)")
-    public void globalExceptionHander(Exception ex) {}
+    public void globalExceptionHandler(Exception ex) {}
 }

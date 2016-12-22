@@ -1,4 +1,4 @@
-package sms.aop;
+package sms.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -37,7 +37,7 @@ public class LoggingAspect {
         logger.info(requestMappingInfo);
     }
 
-    @Before(value = "PointCutDefinition.globalExceptionHander(ex)")
+    @Before(value = "PointCutDefinition.globalExceptionHandler(ex)")
     public void loggingExceptionOccurred(Exception ex) {
         String requestMappingInfo = String.format(
                 "Exception occurred - [%s] ===> [%s: \"%s\"]",

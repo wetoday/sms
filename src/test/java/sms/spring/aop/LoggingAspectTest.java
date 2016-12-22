@@ -1,4 +1,4 @@
-package sms.aop;
+package sms.spring.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
