@@ -36,19 +36,31 @@ public class LoggingAspectTest {
 
     @Test
     public void WhenInvokeRequestMappingAdviceDirectlyThenLogging() throws Exception {
-        expectRequestAction("get", "/some-resource");
+        expectRequestAction("get", "http://localhost/some-resource");
         expectJoinPointAction("foo.bar.SomeClass", "someMethod");
-        String expectedMessage =
-                "Request URL Mapping - [GET][/some-resource] ===> [foo.bar.SomeClass.someMethod()]";
+        String expectedMessage = "Request arrived - [http://localhost/some-resource][GET] " +
+                "===> [foo.bar.SomeClass.someMethod()]";
 
         loggingAspect.loggingRequestMapping(mockJoinPoint);
 
         verify(mockLogger).info(expectedMessage);
     }
 
-    private void expectRequestAction(String requestMethod, String requestURI) {
+    @Test
+    public void WhenInvokeExceptionHandlerAdviceDirectlyThenLogging() throws Exception {
+        expectRequestAction("get", "http://localhost/some-resource");
+        String expectedMessage = "Exception occurred - [http://localhost/some-resource] " +
+                "===> [class java.lang.Exception: \"Test Exception occurred\"]";
+
+        Exception ex = new Exception("Test Exception occurred");
+        loggingAspect.loggingExceptionOccurred(ex);
+
+        verify(mockLogger).error(expectedMessage);
+    }
+
+    private void expectRequestAction(String requestMethod, String requestURL) {
         when(mockRequest.getMethod()).thenReturn(requestMethod);
-        when(mockRequest.getRequestURI()).thenReturn(requestURI);
+        when(mockRequest.getRequestURL()).thenReturn(new StringBuffer(requestURL));
     }
 
     private void expectJoinPointAction(String signatureTypeName, String signatureName) {
