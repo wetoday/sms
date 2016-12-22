@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 
 import java.util.stream.Stream;
 
-@Profile("!prod")
 @Controller
 public class BeanInfoService {
 
