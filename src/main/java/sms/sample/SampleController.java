@@ -2,6 +2,7 @@ package sms.sample;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 @Controller
 public class SampleController {
@@ -17,13 +19,15 @@ public class SampleController {
     private Environment env;
 
     @Autowired
+    private MessageSource messageSource;
+
+    @Autowired
     private SqlSession sqlSession;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String samplePage(Model model) {
-        model.addAttribute("msg", "이것은 샘플 페이지 입니다.");
+    public String samplePage(Locale locale, Model model) {
         model.addAttribute("DBVersion", getDBVersion());
-        model.addAttribute("profile", getProfile());
+        model.addAttribute("profile", getProfile(locale));
 
         return "sample/main";
     }
@@ -34,10 +38,10 @@ public class SampleController {
         return dbVersion.contains("MariaDB") ? dbVersion : dbVersion + "-H2";
     }
 
-    private String getProfile() {
+    private String getProfile(final Locale locale) {
         return Arrays.stream(env.getActiveProfiles())
                 .filter(profile -> profile.equals("prod"))
-                .map(profile -> "운영 환경(prod)")
-                .findAny().orElse("개발 환경(dev)");
+                .map(profile -> messageSource.getMessage("sample.profile.prod",new Object[]{}, locale))
+                .findAny().orElse(messageSource.getMessage("sample.profile.dev",new Object[]{}, locale));
     }
 }

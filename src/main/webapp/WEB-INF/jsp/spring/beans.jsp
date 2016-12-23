@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Bean Info</title>
@@ -10,14 +11,14 @@
     </style>
 </head>
 <body>
-<h2>Root Context Beans:</h2>
+<h2><spring:message code="spring.beaninfo.root" />:</h2>
 <ul class="bean-info">
     <c:forEach var="bean" items="${rootBeans}">
         <li>${bean}</li>
     </c:forEach>
 </ul>
 
-<h2>Web Context Beans:</h2>
+<h2><spring:message code="spring.beaninfo.web" />:</h2>
 <ul class="bean-info">
     <c:forEach var="bean" items="${webBeans}">
         <li>${bean}</li>

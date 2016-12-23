@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Sample</title>
@@ -9,10 +11,14 @@
     </style>
 </head>
 <body>
-    <h1>${msg}</h1>
+    <h1><spring:message code="sample.welcome"/></h1>
     <ul id="sample-info">
-        <li><p>현재 <strong>${profile}</strong>에서 작동 중입니다.</p></li>
-        <li><p>DB 버전: ${DBVersion}</p></li>
+        <li>
+            <strong><spring:message code="sample.profile"/>:</strong> ${profile}
+        </li>
+        <li>
+            <strong><spring:message code="sample.dbversion"/>:</strong> ${DBVersion}
+        </li>
     </ul>
 </body>
 </html>
