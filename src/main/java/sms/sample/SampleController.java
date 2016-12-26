@@ -41,7 +41,7 @@ public class SampleController {
     private String getProfile(final Locale locale) {
         return Arrays.stream(env.getActiveProfiles())
                 .filter(profile -> profile.equals("prod"))
-                .map(profile -> messageSource.getMessage("sample.profile.prod",new Object[]{}, locale))
-                .findAny().orElse(messageSource.getMessage("sample.profile.dev",new Object[]{}, locale));
+                .map(profile -> messageSource.getMessage("sample.profile.prod", null, locale))
+                .findAny().orElse(messageSource.getMessage("sample.profile.dev", null, locale));
     }
 }
