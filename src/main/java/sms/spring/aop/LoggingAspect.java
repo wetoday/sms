@@ -28,7 +28,7 @@ public class LoggingAspect {
         this.request = request;
     }
 
-    @Before("PointCutDefinition.requestMapping()")
+    @Before("PointCutDefinition.handlerMethod()")
     public void loggingRequestMapping(JoinPoint joinPoint) {
         String requestMappingInfo = String.format(
                 "Request arrived - [%s][%S] ===> [%s]",
@@ -37,7 +37,7 @@ public class LoggingAspect {
         logger.info(requestMappingInfo);
     }
 
-    @Before(value = "PointCutDefinition.globalExceptionHandler(ex)")
+    @Before(value = "PointCutDefinition.exceptionHandler(ex)")
     public void loggingExceptionOccurred(Exception ex) {
         String requestMappingInfo = String.format(
                 "Exception occurred - [%s] ===> [%s: \"%s\"]",

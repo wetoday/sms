@@ -9,7 +9,7 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="sms" use-default-filters="false">
-        <context:include-filter type="assignable" expression="sms.spring.config.DBConfig"/>
-        <context:include-filter type="assignable" expression="sms.spring.security.SecurityConfig"/>
+        <!--<context:include-filter type="assignable" expression="sms.spring.config.DBConfig"/>-->
+        <!--<context:include-filter type="assignable" expression="sms.spring.security.SecurityConfig"/>-->
     </context:component-scan>
 </beans>

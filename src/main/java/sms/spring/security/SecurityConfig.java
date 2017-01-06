@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, order = 0)
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true, order = 0)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override

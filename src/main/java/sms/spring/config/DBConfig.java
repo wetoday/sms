@@ -31,14 +31,18 @@ import javax.sql.DataSource;
 })
 public class DBConfig {
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
 
     @Value("${db.init.schema}")
     private Resource INIT_SCHEMA_SCRIPT;
 
     @Value("${db.init.data}")
     private Resource INIT_DATA_SCRIPT;
+
+    @Autowired
+    public DBConfig(Environment env) {
+        this.env = env;
+    }
 
     // DataSource
     @Bean

@@ -6,10 +6,12 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class PointCutDefinition {
 
-   @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
-    public void requestMapping() {}
+   @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)" +
+           " || @annotation(org.springframework.web.bind.annotation.GetMapping)" +
+           " || @annotation(org.springframework.web.bind.annotation.PostMapping)")
+    public void handlerMethod() {}
 
    @Pointcut("@annotation(org.springframework.web.bind.annotation.ExceptionHandler) " +
            "&& args(ex)")
-    public void globalExceptionHandler(Exception ex) {}
+    public void exceptionHandler(Exception ex) {}
 }

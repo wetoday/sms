@@ -6,25 +6,26 @@ import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.Locale;
 
 @Controller
-public class SampleController {
+public class HomeController {
+
+    private final Environment env;
+    private final MessageSource messageSource;
+    private final SqlSession sqlSession;
 
     @Autowired
-    private Environment env;
+    public HomeController(Environment env, MessageSource messageSource, SqlSession sqlSession) {
+        this.env = env;
+        this.messageSource = messageSource;
+        this.sqlSession = sqlSession;
+    }
 
-    @Autowired
-    private MessageSource messageSource;
-
-    @Autowired
-    private SqlSession sqlSession;
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public String samplePage(Locale locale, Model model) {
         model.addAttribute("DBVersion", getDBVersion());
         model.addAttribute("profile", getProfile(locale));

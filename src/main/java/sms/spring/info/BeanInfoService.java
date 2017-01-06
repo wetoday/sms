@@ -9,8 +9,12 @@ import java.util.stream.Stream;
 @Service
 public class BeanInfoService {
 
+    private final ApplicationContext webContext;
+
     @Autowired
-    private ApplicationContext webContext;
+    public BeanInfoService(ApplicationContext webContext) {
+        this.webContext = webContext;
+    }
 
     String[] getRootBeans() {
         return getBeansOf(webContext.getParent());
