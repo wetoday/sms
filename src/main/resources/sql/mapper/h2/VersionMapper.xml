@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-<mapper namespace="sms.sample.VersionMapper">
+<mapper namespace="app.sample.VersionMapper">
   <select id="getDBVersion" resultType="String">
     SELECT H2VERSION() FROM DUAL;
   </select>

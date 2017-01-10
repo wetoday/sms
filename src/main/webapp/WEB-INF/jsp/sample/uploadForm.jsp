@@ -10,9 +10,11 @@
        <h2>${message}</h2>
     </c:if>
 
-    <h1><spring:message code="sample.welcome"/></h1>
+    <h1><spring:message code="sample.fileupload.title"/></h1>
 
     <form method="POST" enctype="multipart/form-data" action="/sample/file">
+        <%--for protecting csfr attacks with spring security--%>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <table>
             <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
             <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
