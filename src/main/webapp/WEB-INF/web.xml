@@ -19,6 +19,13 @@
             <param-value>/WEB-INF/spring-config/web-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <!--ref: http://docs.oracle.com/javaee/6/tutorial/doc/glrbb.html-->
+        <multipart-config>
+            <location>/tmp</location>
+            <file-size-threshold>0</file-size-threshold>
+            <max-file-size>2097152</max-file-size>
+            <max-request-size>4194304</max-request-size>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
