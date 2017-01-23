@@ -37,4 +37,10 @@ local.properties
 # Locally stored "Eclipse launch configuration"
 *.launch
 
+# Log file
+logs
+
+# JRebel file
+rebel.xml
+
 
