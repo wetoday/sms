@@ -84,3 +84,7 @@ dependencies {
     compile 'com.google.guava:guava'
     compile 'org.apache.commons:commons-lang3'
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
