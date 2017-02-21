@@ -1,6 +1,7 @@
 # Common
 *target*
 *.jar
+!gradle-wrapper.jar
 *.war
 *.ear
 *.class

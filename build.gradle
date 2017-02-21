@@ -36,7 +36,7 @@ configurations.all {
 
 dependencyManagement {
     imports {
-        mavenBom 'io.spring.platform:platform-bom:2.0.8.RELEASE'
+        mavenBom 'io.spring.platform:platform-bom:Athens-SR2'
     }
 }
 
@@ -83,4 +83,8 @@ dependencies {
     // Utility Dependencies
     compile 'com.google.guava:guava'
     compile 'org.apache.commons:commons-lang3'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
 }

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+   unit :
+     build:  
+       context: ../
+       dockerfile: infra/Dockerfile
+     image: spring-template-gradle
+
+   
